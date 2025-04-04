@@ -7,7 +7,7 @@ const socialMediaLinks = [
   {
     id: '1',
     title: 'Instagram',
-    url: 'https://instagram.com/seuusuario',
+    url: 'https://instagram.com/arinelson.me',
     imageUrl: 'https://placehold.co/600x400/9b87f5/FFFFFF/png?text=Instagram',
     description: 'Siga-me no Instagram'
   },
@@ -21,14 +21,14 @@ const socialMediaLinks = [
   {
     id: '3',
     title: 'TikTok',
-    url: 'https://tiktok.com/@seuusuario',
+    url: 'https://www.tiktok.com/@arinelsonsantoss',
     imageUrl: 'https://placehold.co/600x400/6E59A5/FFFFFF/png?text=TikTok',
     description: 'Vídeos curtos e divertidos'
   },
   {
     id: '4',
     title: 'Pinterest',
-    url: 'https://pinterest.com/seuusuario',
+    url: 'https://br.pinterest.com/arinelsonsnts/',
     imageUrl: 'https://placehold.co/600x400/9b87f5/FFFFFF/png?text=Pinterest',
     description: 'Minhas inspirações e ideias'
   },
@@ -41,15 +41,15 @@ const socialMediaLinks = [
   },
   {
     id: '6',
-    title: 'Twitter',
-    url: 'https://twitter.com/seuusuario',
-    imageUrl: 'https://placehold.co/600x400/6E59A5/FFFFFF/png?text=Twitter',
+    title: 'Threads',
+    url: 'https://www.threads.net/@arinelson.me',
+    imageUrl: 'https://placehold.co/600x400/6E59A5/FFFFFF/png?text=Threads',
     description: 'Siga-me no Twitter'
   },
   {
     id: '7',
     title: 'YouTube',
-    url: 'https://youtube.com/seucanal',
+    url: 'https://www.youtube.com/@arinelsonsnts',
     imageUrl: 'https://placehold.co/600x400/9b87f5/FFFFFF/png?text=YouTube',
     description: 'Inscreva-se no meu canal'
   }
