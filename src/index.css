@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    /* Light theme variables (default) */
+    /* Base theme variables */
     --background: 210 40% 98%;
     --foreground: 222 47% 11%;
 
@@ -45,45 +45,6 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 262 80% 50%;
   }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 262 80% 65%;
-    --primary-foreground: 240 5.9% 10%;
-
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-
-    --sidebar-background: 260 10% 12%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 262 80% 65%;
-    --sidebar-primary-foreground: 240 5.9% 10%;
-    --sidebar-accent: 280 20% 26%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 280 13% 20%;
-    --sidebar-ring: 262 80% 65%;
-  }
 }
 
 @layer base {
@@ -92,16 +53,8 @@
   }
   
   body {
-    @apply bg-background text-foreground antialiased overflow-x-hidden;
+    @apply bg-gray-100 text-foreground antialiased overflow-x-hidden;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
-  }
-
-  body.dark {
-    @apply bg-futuristic-dark;
-  }
-
-  body.light {
-    @apply bg-gray-100;
   }
 
   html {
@@ -120,39 +73,15 @@
   }
 
   .glass-card {
-    @apply backdrop-blur-md border shadow-lg;
-  }
-
-  .dark .glass-card {
-    @apply bg-white/10 border-white/20;
-  }
-
-  .light .glass-card {
-    @apply bg-white/80 border-gray-200;
+    @apply backdrop-blur-md bg-white/80 border border-gray-200 shadow-lg;
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent;
-  }
-
-  .dark .text-gradient {
-    @apply bg-gradient-to-br from-white via-white/90 to-white/70;
-  }
-
-  .light .text-gradient {
-    @apply bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700;
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700;
   }
   
   .text-gradient-purple {
-    @apply bg-clip-text text-transparent;
-  }
-
-  .dark .text-gradient-purple {
-    @apply bg-gradient-to-r from-futuristic-primary to-futuristic-light;
-  }
-
-  .light .text-gradient-purple {
-    @apply bg-gradient-to-r from-futuristic-secondary to-futuristic-primary;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-futuristic-secondary to-futuristic-primary;
   }
 }
 
@@ -166,76 +95,28 @@
 }
 
 .carousel-dot {
-  @apply w-2 h-2 rounded-full transition-all duration-300;
-}
-
-.dark .carousel-dot {
-  @apply bg-gray-600;
-}
-
-.light .carousel-dot {
-  @apply bg-gray-300;
+  @apply w-2 h-2 rounded-full transition-all duration-300 bg-gray-300;
 }
 
 .carousel-dot.active {
-  @apply w-3 h-3;
-}
-
-.dark .carousel-dot.active {
-  @apply bg-futuristic-primary;
-}
-
-.light .carousel-dot.active {
-  @apply bg-futuristic-secondary;
+  @apply w-3 h-3 bg-futuristic-secondary;
 }
 
 /* Progress bar styles */
 .progress-bar {
-  @apply h-1 rounded-full overflow-hidden;
-}
-
-.dark .progress-bar {
-  @apply bg-gray-700/30;
-}
-
-.light .progress-bar {
-  @apply bg-gray-300;
+  @apply h-1 rounded-full overflow-hidden bg-gray-300;
 }
 
 .progress-fill {
-  @apply h-full transition-all duration-150;
+  @apply h-full transition-all duration-150 bg-futuristic-secondary;
 }
 
-.dark .progress-fill {
-  @apply bg-futuristic-primary;
-}
-
-.light .progress-fill {
-  @apply bg-futuristic-secondary;
-}
-
-/* Card styles with theme variations */
+/* Card styles */
 .link-card {
-  @apply rounded-xl transition-all duration-300 overflow-hidden;
-}
-
-.dark .link-card {
-  @apply bg-black/40 hover:bg-black/60 border-white/10;
-}
-
-.light .link-card {
-  @apply bg-white/90 hover:bg-white border-gray-200 shadow-md hover:shadow-lg;
+  @apply rounded-xl transition-all duration-300 overflow-hidden bg-white/90 hover:bg-white border-gray-200 shadow-md hover:shadow-lg;
 }
 
 /* Button styles */
 .theme-button {
-  @apply rounded-full p-2 transition-colors;
-}
-
-.dark .theme-button {
-  @apply bg-white/10 hover:bg-white/20;
-}
-
-.light .theme-button {
-  @apply bg-gray-200 hover:bg-gray-300;
+  @apply rounded-full p-2 transition-colors bg-gray-200 hover:bg-gray-300;
 }

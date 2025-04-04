@@ -7,8 +7,8 @@ const Footer: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4">
         {/* Contact Section */}
         <div className="mb-8 glass-card rounded-xl p-6">
-          <h2 className="text-2xl font-bold mb-4 text-gradient-purple">Entre em Contato</h2>
-          <p className="text-sm mb-6 dark:text-gray-300 light:text-gray-600">
+          <h2 className="text-2xl font-bold mb-4">Entre em Contato</h2>
+          <p className="text-sm mb-6 text-gray-600">
             Tem alguma pergunta ou proposta? Preencha o formulário abaixo para entrar em contato.
           </p>
           
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
         </div>
         
         {/* Copyright Section */}
-        <div className="text-sm dark:text-gray-400 light:text-gray-500">
+        <div className="text-sm text-gray-500">
           <p>© {new Date().getFullYear()} Seu Nome | Todos os direitos reservados</p>
           <p className="mt-2 text-xs">
             Criado com 
