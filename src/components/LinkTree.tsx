@@ -1,7 +1,6 @@
-
 import React from 'react';
 import LinkCarousel from './LinkCarousel';
-import { Instagram, LinkedinIcon, Facebook, Twitter, PinterestIcon, TiktokIcon, YoutubeIcon, Brush, BookOpen, Dumbbell } from 'lucide-react';
+import { Instagram, Linkedin, Facebook, Twitter, Bookmark, Music, Youtube, Brush, BookOpen, Dumbbell } from 'lucide-react';
 
 // Dados mockados para as diferentes categorias
 const socialMediaLinks = [
