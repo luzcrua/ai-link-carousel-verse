@@ -35,35 +35,41 @@ const ParticleBackground: React.FC = () => {
     };
 
     const getRandomColor = () => {
-      const colors = theme === 'dark' 
-        ? [
-            'rgba(155, 135, 245, 0.7)', // Primary
-            'rgba(126, 105, 171, 0.7)', // Secondary
-            'rgba(110, 89, 165, 0.7)',  // Accent
-            'rgba(214, 188, 250, 0.6)', // Light
-          ]
-        : [
-            'rgba(155, 135, 245, 0.5)', // Primary but lighter
-            'rgba(126, 105, 171, 0.5)', // Secondary but lighter
-            'rgba(110, 89, 165, 0.5)',  // Accent but lighter
-            'rgba(214, 188, 250, 0.4)', // Light but even lighter
-          ];
+      // Different color schemes for dark and light modes
+      const darkColors = [
+        'rgba(155, 135, 245, 0.7)', // Primary
+        'rgba(126, 105, 171, 0.7)', // Secondary
+        'rgba(110, 89, 165, 0.7)',  // Accent
+        'rgba(214, 188, 250, 0.6)', // Light
+      ];
+      
+      const lightColors = [
+        'rgba(155, 135, 245, 0.3)', // Primary but lighter
+        'rgba(126, 105, 171, 0.3)', // Secondary but lighter
+        'rgba(110, 89, 165, 0.3)',  // Accent but lighter
+        'rgba(214, 188, 250, 0.2)', // Light but even lighter
+      ];
+      
+      const colors = theme === 'dark' ? darkColors : lightColors;
       return colors[Math.floor(Math.random() * colors.length)];
     };
 
     const initParticles = () => {
       particles.current = [];
-      const particleCount = Math.min(Math.floor(window.innerWidth * 0.05), 120);
+      // Fewer particles in light mode for a cleaner look
+      const particleCount = theme === 'dark' 
+        ? Math.min(Math.floor(window.innerWidth * 0.05), 120)
+        : Math.min(Math.floor(window.innerWidth * 0.03), 80);
       
       for (let i = 0; i < particleCount; i++) {
         particles.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 2 + 0.5,
-          speedX: (Math.random() - 0.5) * 0.3,
-          speedY: (Math.random() - 0.5) * 0.3,
+          size: Math.random() * (theme === 'dark' ? 2 : 1.5) + (theme === 'dark' ? 0.5 : 0.3),
+          speedX: (Math.random() - 0.5) * (theme === 'dark' ? 0.3 : 0.2),
+          speedY: (Math.random() - 0.5) * (theme === 'dark' ? 0.3 : 0.2),
           color: getRandomColor(),
-          opacity: Math.random() * 0.5 + 0.2,
+          opacity: Math.random() * (theme === 'dark' ? 0.5 : 0.3) + (theme === 'dark' ? 0.2 : 0.1),
           attractionForce: Math.random() * 0.05 + 0.02
         });
       }
@@ -97,7 +103,7 @@ const ParticleBackground: React.FC = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Create nebula background effect
+      // Create nebula background effect - different for light/dark mode
       const gradient = ctx.createRadialGradient(
         canvas.width / 2, 
         canvas.height / 2, 
@@ -112,8 +118,8 @@ const ParticleBackground: React.FC = () => {
         gradient.addColorStop(0.5, 'rgba(25, 20, 35, 0.1)');
         gradient.addColorStop(1, 'rgba(20, 15, 30, 0)');
       } else {
-        gradient.addColorStop(0, 'rgba(200, 180, 255, 0.1)');
-        gradient.addColorStop(0.5, 'rgba(180, 160, 230, 0.05)');
+        gradient.addColorStop(0, 'rgba(200, 180, 255, 0.05)');
+        gradient.addColorStop(0.5, 'rgba(180, 160, 230, 0.03)');
         gradient.addColorStop(1, 'rgba(160, 140, 210, 0)');
       }
       
@@ -128,24 +134,30 @@ const ParticleBackground: React.FC = () => {
           const dy = mousePosition.current.y - particle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
-          if (distance < 150) {
+          const attractionRadius = theme === 'dark' ? 150 : 120;
+          
+          if (distance < attractionRadius) {
             // Calculate attraction direction
             const angle = Math.atan2(dy, dx);
-            const force = (1 - distance / 150) * particle.attractionForce;
+            const force = (1 - distance / attractionRadius) * particle.attractionForce;
             
-            // Apply attraction
-            particle.x += Math.cos(angle) * force * 2;
-            particle.y += Math.sin(angle) * force * 2;
+            // Apply attraction - stronger in dark mode
+            const forceMult = theme === 'dark' ? 2 : 1.5;
+            particle.x += Math.cos(angle) * force * forceMult;
+            particle.y += Math.sin(angle) * force * forceMult;
             
             // Increase opacity near mouse
-            particle.opacity = Math.min(0.9, particle.opacity + 0.01);
+            const maxOpacity = theme === 'dark' ? 0.9 : 0.6;
+            particle.opacity = Math.min(maxOpacity, particle.opacity + 0.01);
           } else {
             // Gradually return to original opacity
-            particle.opacity = Math.max(0.2, particle.opacity - 0.005);
+            const minOpacity = theme === 'dark' ? 0.2 : 0.1;
+            particle.opacity = Math.max(minOpacity, particle.opacity - 0.005);
           }
         } else {
           // Gradually return to original opacity
-          particle.opacity = Math.max(0.2, particle.opacity - 0.005);
+          const minOpacity = theme === 'dark' ? 0.2 : 0.1;
+          particle.opacity = Math.max(minOpacity, particle.opacity - 0.005);
         }
         
         // Draw particle with current opacity
@@ -170,7 +182,7 @@ const ParticleBackground: React.FC = () => {
         }
 
         // Limit max speed
-        const maxSpeed = 0.8;
+        const maxSpeed = theme === 'dark' ? 0.8 : 0.5;
         const currentSpeed = Math.sqrt(particle.speedX * particle.speedX + particle.speedY * particle.speedY);
         if (currentSpeed > maxSpeed) {
           particle.speedX = (particle.speedX / currentSpeed) * maxSpeed;
@@ -178,7 +190,7 @@ const ParticleBackground: React.FC = () => {
         }
       });
       
-      // Draw connections between particles that are close
+      // Draw connections between particles that are close - different for light/dark
       particles.current.forEach((particle, index) => {
         for (let j = index + 1; j < particles.current.length; j++) {
           const otherParticle = particles.current[j];
@@ -187,15 +199,19 @@ const ParticleBackground: React.FC = () => {
             Math.pow(particle.y - otherParticle.y, 2)
           );
           
-          if (distance < 100) {
+          const connectionDistance = theme === 'dark' ? 100 : 80;
+          
+          if (distance < connectionDistance) {
             // Average the two particles' opacities for connection
-            const connectionOpacity = (particle.opacity + otherParticle.opacity) / 2 * 0.5;
+            const connectionOpacity = (particle.opacity + otherParticle.opacity) / 2 * (theme === 'dark' ? 0.5 : 0.3);
             
             ctx.beginPath();
-            ctx.strokeStyle = theme === 'dark' 
-              ? `rgba(155, 135, 245, ${connectionOpacity - distance/500})` 
-              : `rgba(155, 135, 245, ${connectionOpacity * 0.7 - distance/700})`;
-            ctx.lineWidth = 0.5;
+            if (theme === 'dark') {
+              ctx.strokeStyle = `rgba(155, 135, 245, ${connectionOpacity - distance/500})`;
+            } else {
+              ctx.strokeStyle = `rgba(126, 105, 171, ${connectionOpacity * 0.7 - distance/700})`;
+            }
+            ctx.lineWidth = theme === 'dark' ? 0.5 : 0.3;
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
             ctx.stroke();
@@ -211,8 +227,15 @@ const ParticleBackground: React.FC = () => {
           hoverParticle.x, hoverParticle.y, 0,
           hoverParticle.x, hoverParticle.y, glowRadius
         );
-        gradient.addColorStop(0, 'rgba(155, 135, 245, 0.4)');
-        gradient.addColorStop(1, 'rgba(155, 135, 245, 0)');
+        
+        if (theme === 'dark') {
+          gradient.addColorStop(0, 'rgba(155, 135, 245, 0.4)');
+          gradient.addColorStop(1, 'rgba(155, 135, 245, 0)');
+        } else {
+          gradient.addColorStop(0, 'rgba(126, 105, 171, 0.2)');
+          gradient.addColorStop(1, 'rgba(126, 105, 171, 0)');
+        }
+        
         ctx.fillStyle = gradient;
         ctx.arc(hoverParticle.x, hoverParticle.y, glowRadius, 0, Math.PI * 2);
         ctx.fill();

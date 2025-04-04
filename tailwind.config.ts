@@ -65,10 +65,16 @@ export default {
 				},
 				futuristic: {
 					dark: '#1A1F2C',
+					light: '#F5F7FA',
 					primary: '#9b87f5',
 					secondary: '#7E69AB',
 					accent: '#6E59A5',
-					light: '#D6BCFA'
+					purple: '#D6BCFA',
+					gray: {
+						light: '#E2E8F0',
+						medium: '#94A3B8',
+						dark: '#334155'
+					}
 				}
 			},
 			borderRadius: {
@@ -100,13 +106,22 @@ export default {
 				'pulse-slow': {
 					'0%, 100%': { opacity: '0.6' },
 					'50%': { opacity: '1' }
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '-500px 0' },
+					'100%': { backgroundPosition: '500px 0' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'float': 'float 6s ease-in-out infinite',
-				'pulse-slow': 'pulse-slow 4s ease-in-out infinite'
+				'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
+				'shimmer': 'shimmer 2s infinite linear'
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'shimmer': 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
 			}
 		}
 	},
