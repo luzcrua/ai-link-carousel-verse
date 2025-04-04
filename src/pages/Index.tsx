@@ -3,7 +3,7 @@ import React from 'react';
 import ParticleBackground from '@/components/ParticleBackground';
 import ProfileHeader from '@/components/ProfileHeader';
 import LinkTree from '@/components/LinkTree';
-import Footer from '@/components/Footer';
+//import Footer from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 const Index = () => {
