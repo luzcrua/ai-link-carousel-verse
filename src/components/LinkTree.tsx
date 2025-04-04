@@ -8,7 +8,7 @@ const socialMediaLinks = [
     id: '1',
     title: 'Instagram',
     url: 'https://instagram.com/arinelson.me',
-    imageUrl: 'https://placehold.co/600x400/9b87f5/FFFFFF/png?text=Instagram',
+    imageUrl: 'https://placehold.co/600x400/C13584/FFFFFF/png?text=Instagram',
     description: 'Siga-me no Instagram'
   },
   {
@@ -22,7 +22,7 @@ const socialMediaLinks = [
     id: '3',
     title: 'TikTok',
     url: 'https://www.tiktok.com/@arinelsonsantoss',
-    imageUrl: 'https://placehold.co/600x400/6E59A5/FFFFFF/png?text=TikTok',
+    imageUrl: 'https://placehold.co/600x400/black/FFFFFF/png?text=TikTok',
     description: 'Vídeos curtos e divertidos'
   },
   {
