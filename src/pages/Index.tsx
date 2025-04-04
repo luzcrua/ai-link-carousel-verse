@@ -29,7 +29,7 @@ const Index = () => {
         loop
         allow="autoplay"
         />
-
+)
 
   return (
     <ThemeProvider>
