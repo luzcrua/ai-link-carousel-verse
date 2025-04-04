@@ -19,9 +19,10 @@ const Index = () => {
         {/* Conteúdo principal */}
         <div className="relative z-10">
           <ProfileHeader 
-            name="Arinelson Santo"
+            name="Arinelson Santos"
             avatarUrl="/fotoDePerfil.jpg"
-            bio="Criador de conteúdo e resolvedor de problemas digitais. O digital é um meio, não um fim."
+            bio="Criador de conteúdo e resolvedor de problemas digitais.
+            O digital é um meio, não um fim."
           />
           
           <LinkTree />
