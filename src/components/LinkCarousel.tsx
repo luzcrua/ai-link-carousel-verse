@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Button } from "@/components/ui/button";
@@ -32,7 +31,7 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true, 
     align: 'start',
-    draggable: true 
+    dragFree: true
   });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
@@ -42,7 +41,6 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
   const { theme } = useTheme();
   const [progressWidth, setProgressWidth] = useState(0);
   
-  // For touch/gesture support
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
 
@@ -66,12 +64,11 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
-  // Simple audio feedback
   const playClickSound = () => {
     const audio = new Audio();
-    audio.src = 'data:audio/wav;base64,UklGRl9vAAABAAIAgLgCAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YTtvAACBhYqFbF1fdYiVlIFwZGJqeIeRjoZ5cXJ9h46MgHhyfYSOjoJ7eX+EjIyEfXp+g4qLhH58fYKIiYR/fX2BhoeEgH5+gIWFg4B+foGFhYOAfn6AhIWEgX9/gIOEg4F/f4CDhIOBf3+Ag4SDgn+AgIOEg4F/gICChIOCgICAgYODgoGAgICCg4OCgICAgYKDgoGAgICBgoOCgYCAgIGCg4KBgIGAgYKCgYCAgICBgoKBgIGAgYKCgYCAgICBgoKBgIGAgYKCgYGAgICBgYKBgIGAgYGCgYGAgICBgYKBgIGAgIGBgoGAgIGAgYGBgYGAgICBgYGBgICBgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgA==';
+    audio.src = 'data:audio/wav;base64,UklGRl9vAAABAAIAgLgCAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YTtvAACBhYqFbF1fdYiVlIFwZGJqeIeRjoZ5cXJ9h46MgHhyfYSOjoJ7eX+EjIyEfXp+g4qLhH58fYKIiYR/fX2BhoeEgH5+gIWFg4B+foGFhYOAfn6AhIWEgX9/gIOEg4F/f4CDhIOBf3+Ag4SDgn+AgIOEg4F/gICChIOCgICAgYODgoGAgICCg4OCgICAgYKDgoGAgICBgoOCgYCAgIGCg4KBgIGAgYKCgYCAgICBgoKBgIGAgYKCgYCAgICBgoKBgIGAgYKCgYGAgICBgYKBgIGAgYGCgYGAgICBgYKBgIGAgIGBgoGAgIGAgYGBgYGAgICBgYGBgICBgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgA==';
     audio.volume = 0.2;
-    audio.play().catch(() => {}); // Catch errors as browsers may block autoplay
+    audio.play().catch(() => {});
   };
 
   useEffect(() => {
@@ -86,7 +83,6 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
     };
   }, [emblaApi, onSelect]);
 
-  // Progress bar animation
   useEffect(() => {
     if (autoplay && emblaApi) {
       let startTime: number;
@@ -139,7 +135,6 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
     }
   };
 
-  // Touch events for mobile gestures
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.touches[0].clientX);
   };
@@ -156,7 +151,6 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
     }
   };
 
-  // Get category-specific styles
   const getCategoryColorClass = () => {
     switch(title) {
       case "REDES SOCIAIS": return "from-futuristic-primary to-futuristic-light";
@@ -180,7 +174,6 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
         {title}
       </h2>
       
-      {/* Progress bar */}
       <div className="w-full h-1 bg-gray-700/30 rounded-full mb-4 overflow-hidden">
         <div 
           ref={progressBarRef}
