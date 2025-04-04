@@ -43,7 +43,7 @@ const socialMediaLinks = [
     id: '6',
     title: 'Threads',
     url: 'https://www.threads.net/@arinelson.me',
-    imageUrl: 'https://placehold.co/600x400/6E59A5/FFFFFF/png?text=Threads',
+    imageUrl: 'https://placehold.co/600x400/black/FFFFFF/png?text=Threads',
     description: 'Siga-me no Twitter'
   },
   {
