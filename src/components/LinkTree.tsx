@@ -15,7 +15,7 @@ const socialMediaLinks = [
     id: '2',
     title: 'LinkedIn',
     url: 'https://linkedin.com/in/seuusuario',
-    imageUrl: 'https://placehold.co/600x400/7E69AB/FFFFFF/png?text=LinkedIn',
+    imageUrl: 'https://placehold.co/600x400/0A66C2/FFFFFF/png?text=LinkedIn',
     description: 'Meu perfil profissional'
   },
   {
@@ -29,14 +29,14 @@ const socialMediaLinks = [
     id: '4',
     title: 'Pinterest',
     url: 'https://br.pinterest.com/arinelsonsnts/',
-    imageUrl: 'https://placehold.co/600x400/9b87f5/FFFFFF/png?text=Pinterest',
+    imageUrl: 'https://placehold.co/600x400/E60023/FFFFFF/png?text=Pinterest',
     description: 'Minhas inspirações e ideias'
   },
   {
     id: '5',
     title: 'Facebook',
     url: 'https://facebook.com/seuusuario',
-    imageUrl: 'https://placehold.co/600x400/7E69AB/FFFFFF/png?text=Facebook',
+    imageUrl: 'https://placehold.co/600x400/1877F2/FFFFFF/png?text=Facebook',
     description: 'Minha página no Facebook'
   },
   {
@@ -50,7 +50,7 @@ const socialMediaLinks = [
     id: '7',
     title: 'YouTube',
     url: 'https://www.youtube.com/@arinelsonsnts',
-    imageUrl: 'https://placehold.co/600x400/9b87f5/FFFFFF/png?text=YouTube',
+    imageUrl: 'https://placehold.co/600x400/FF0000/FFFFFF/png?text=YouTube',
     description: 'Inscreva-se no meu canal'
   }
 ];
