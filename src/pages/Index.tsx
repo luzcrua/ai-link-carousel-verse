@@ -8,29 +8,6 @@ import Footer from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 const Index = () => {
-
-  useEffect(() => {
-    // Try to autoplay the audio when component mounts
-    const playAudio = () => {
-      if (iframeRef.current) {
-        iframeRef.current.allow = "autoplay";
-      }
-    };
-
-    playAudio();
-  }, []);
-
-  return (
-    <div className="min-h-screen bg-black text-white">
-      <iframe 
-        ref={iframeRef}
-        src="./lovable-uploads/music-background1.MP3"
-        style={{ display: 'none' }}
-        loop
-        allow="autoplay"
-        />
-)
-
   return (
     <ThemeProvider>
       <div className="min-h-screen w-full relative overflow-hidden">
