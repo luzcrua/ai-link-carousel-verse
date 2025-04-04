@@ -26,7 +26,6 @@ const Index = () => {
           
           <LinkTree />
           
-      /*    <Footer />*/
         </div>
       </div>
     </ThemeProvider>
