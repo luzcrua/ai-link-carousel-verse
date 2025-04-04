@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
             Tem alguma pergunta ou proposta? Preencha o formulário abaixo para entrar em contato.
           </p>
           
-          <div className="w-full h-[600px] overflow-hidden rounded-lg">
+          <div className="w-full h-[800px] overflow-hidden rounded-lg">
             <iframe 
               src="https://arinelsonform.netlify.app/" 
               title="Formulário de Contato"
