@@ -140,9 +140,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
       >
-        <span>Feito com</span>
-        <Heart className="w-4 h-4 mx-1 text-red-400 animate-pulse" />
-        <span>e AI</span>
+       
       </motion.div>
       
       <motion.button
