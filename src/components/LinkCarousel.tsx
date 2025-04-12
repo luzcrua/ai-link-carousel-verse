@@ -43,6 +43,7 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
   const isMobile = useIsMobile();
   const { theme } = useTheme();
   const [progressWidth, setProgressWidth] = useState(0);
+  const [dragFreeEnabled, setDragFreeEnabled] = useState(false);
   
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -66,7 +67,7 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
 
   const playClickSound = () => {
     const audio = new Audio();
-    audio.src = 'data:audio/wav;base64,UklGRl9vAAABAAIAgLgCAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YTtvAACBhYqFbF1fdYiVlIFwZGJqeIeRjoZ5cXJ9h46MgHhyfYSOjoJ7eX+EjIyEfXp+g4qLhH58fYKIiYR/fX2BhoeEgH5+gIWFg4B+foGFhYOAfn6AhIWEgX9/gIOEg4F/f4CDhIOBf3+Ag4SDgn+AgIOEg4F/gICChIOCgICAgYODgoGAgICCg4OCgICAgYKDgoGAgICBgoOCgYCAgIGCg4KBgIGAgYKCgYCAgICBgoKBgIGAgYKCgYCAgICBgoKBgIGAgYKCgYGAgICBgYKBgIGAgYGCgYGAgICBgYKBgIGAgIGBgoGAgIGAgYGBgYGAgICBgYGBgICBgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgA==';
+    audio.src = 'data:audio/wav;base64,UklGRl9vAAABAAIAgLgCAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YTtvAACBhYqFbF1fdYiVlIFwZGJqeIeRjoZ5cXJ9h46MgHhyfYSOjoJ7eX+EjIyEfXp+g4qLhH58fYKIiYR/fX2BhoeEgH5+gIWFg4B+foGFhYOAfn6AhIWEgX9/gIOEg4F/f4CDhIOBf3+Ag4SDgn+AgIOEg4F/gICChIOCgICAgYODgoGAgICCg4OCgICAgYKDgoGAgICBgoOCgYCAgIGCg4KBgIGAgYKCgYCAgICBgoKBgIGAgYKCgYCAgICBgoKBgIGAgYKCgYGAgICBgYKBgIGAgYGCgYGAgICBgYKBgIGAgIGBgoGAgIGAgYGBgYGAgICBgYGBgICBgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgIGAgYGBgYCAgICBgYGBgICAgIGBgYGAgA==';
     audio.volume = 0.2;
     audio.play().catch(() => {});
   };
@@ -80,7 +81,9 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
 
     // Configure carousel to prevent accidental multi-slide scrolling on touch devices
     emblaApi.on('pointerDown', () => {
-      emblaApi.setOptions({ dragFree: false });
+      // We can't use setOptions directly as it doesn't exist in the type
+      // Instead we'll use our state variable to control this behavior
+      setDragFreeEnabled(false);
     });
 
     return () => {
