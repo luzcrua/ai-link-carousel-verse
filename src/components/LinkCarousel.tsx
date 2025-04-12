@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Button } from "@/components/ui/button";
@@ -31,7 +32,9 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true, 
     align: 'start',
-    dragFree: true
+    dragFree: false, // Disable dragFree for more controlled scrolling
+    containScroll: 'keepSnaps', // Ensures the carousel maintains its snap positions
+    slidesToScroll: 1 // Explicitly set to scroll one slide at a time
   });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
@@ -41,9 +44,6 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
   const { theme } = useTheme();
   const [progressWidth, setProgressWidth] = useState(0);
   
-  const [touchStartX, setTouchStartX] = useState(0);
-  const [touchEndX, setTouchEndX] = useState(0);
-
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
     playClickSound();
@@ -77,6 +77,11 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
     onSelect();
     setScrollSnaps(emblaApi.scrollSnapList());
     emblaApi.on('select', onSelect);
+
+    // Configure carousel to prevent accidental multi-slide scrolling on touch devices
+    emblaApi.on('pointerDown', () => {
+      emblaApi.setOptions({ dragFree: false });
+    });
 
     return () => {
       emblaApi.off('select', onSelect);
@@ -135,22 +140,6 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
     }
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEndX(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (touchStartX - touchEndX > 100) {
-      scrollNext();
-    } else if (touchEndX - touchStartX > 100) {
-      scrollPrev();
-    }
-  };
-
   const getCategoryColorClass = () => {
     switch(title) {
       case "REDES SOCIAIS": return "from-futuristic-primary to-futuristic-light";
@@ -166,9 +155,6 @@ const LinkCarousel: React.FC<LinkCarouselProps> = ({
       className="mb-12 relative" 
       onMouseEnter={handleMouseEnter} 
       onMouseLeave={handleMouseLeave}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
     >
       <h2 className={`text-xl md:text-2xl font-bold mb-4 bg-gradient-to-r ${getCategoryColorClass()} bg-clip-text text-transparent`}>
         {title}

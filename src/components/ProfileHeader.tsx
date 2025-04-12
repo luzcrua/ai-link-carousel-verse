@@ -82,7 +82,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   }, [theme]);
 
   return (
-    <div className="flex flex-col items-center text-center py-6 sm:py-10 mb-6 relative z-10">
+    <div className="flex flex-col items-center text-center py-6 sm:py-10 mb-6 relative z-10 container mx-auto">
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -126,7 +126,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
       </motion.h1>
       
       <motion.p 
-        className="text-gray-300 text-sm md:text-base max-w-md"
+        className="text-gray-300 text-sm md:text-base max-w-md px-4"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.4 }}
@@ -140,11 +140,10 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
       >
-       
       </motion.div>
       
       <motion.button
-        className="absolute top-0 right-0 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+        className="absolute top-4 right-4 md:right-8 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
         onClick={toggleTheme}
         aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         whileHover={{ scale: 1.1 }}
