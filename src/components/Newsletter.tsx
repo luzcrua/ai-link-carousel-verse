@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { EnvelopeClosedIcon } from "@radix-ui/react-icons";
+import { EnvelopeIcon } from "lucide-react";
 import { toast } from "./ui/use-toast";
 
 const Newsletter: React.FC = () => {
@@ -52,7 +52,7 @@ const Newsletter: React.FC = () => {
 
             <form onSubmit={handleSubmit} className="mt-6 flex flex-col sm:flex-row gap-2">
               <div className="relative flex-grow">
-                <EnvelopeClosedIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <EnvelopeIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
                   type="email"
                   placeholder="Coloque aqui seu melhor e-mail"
