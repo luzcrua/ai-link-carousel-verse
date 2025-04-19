@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
           <p>© {new Date().getFullYear()} Arinelson Santos | Todos os direitos reservados</p>
           <p className="mt-2 text-xs">
             Idealizado por 
-            <span className="mx-1">ARINESON</span> 
+            <span className="mx-1">Arinelson</span> 
           </p>
         </div>
       </div>
