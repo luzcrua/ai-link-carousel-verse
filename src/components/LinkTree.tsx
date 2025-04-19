@@ -144,19 +144,19 @@ const LinkTree: React.FC = () => {
       />
       
       <LinkCarousel 
-        title="PORTFOLIOS" 
+        title="PORTFOLIOS  (ATUALIZANDO)" 
         links={portfolioLinks} 
         autoplayInterval={6000}
       />
       
       <LinkCarousel 
-        title="BLOG" 
+        title="BLOG  (EM BREVE)" 
         links={blogLinks} 
         autoplayInterval={7000}
       />
       
       <LinkCarousel 
-        title="DELTA FITNESS BRAZIL" 
+        title="DELTA FITNESS BRAZIL (EM BREVE)" 
         links={fitnessLinks} 
         autoplayInterval={5500}
       />
