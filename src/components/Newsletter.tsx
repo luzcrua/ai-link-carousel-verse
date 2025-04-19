@@ -45,7 +45,7 @@ const Newsletter: React.FC = () => {
               usando o poder da Internet.
             </p>
             <p className="text-white/80">
-              Uma nova publicação toda semana às 18:18. Cadastre seu 
+              Uma nova publicação todo mês. Cadastre seu 
               <span className="font-semibold text-white"> melhor email abaixo</span> para 
               desbloquear todas as publicações.
             </p>
@@ -84,7 +84,7 @@ const Newsletter: React.FC = () => {
           <div className="w-80 bg-white rounded-xl overflow-hidden shadow-xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
             <div className="bg-black text-white px-5 py-4">
               <h3 className="font-bold text-lg">O Universo Digital dos Conectados</h3>
-              <p className="text-sm text-gray-300">Universo Digital - Edição #029</p>
+              <p className="text-sm text-gray-300">Universo Digital - Edição #0001</p>
             </div>
             <div className="p-4">
               <img 
