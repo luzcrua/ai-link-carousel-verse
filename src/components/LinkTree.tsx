@@ -44,7 +44,7 @@ const socialMediaLinks = [
     title: 'Threads',
     url: 'https://www.threads.net/@arinelson.me',
     imageUrl: 'https://placehold.co/600x400/black/FFFFFF/png?text=Threads',
-    description: 'Siga-me no Twitter'
+    description: 'Siga-me no Threads'
   },
   {
     id: '7',
@@ -156,7 +156,7 @@ const LinkTree: React.FC = () => {
       />
       
       <LinkCarousel 
-        title="MODA FITNESS" 
+        title="DELTA FITNESS BRAZIL" 
         links={fitnessLinks} 
         autoplayInterval={5500}
       />
