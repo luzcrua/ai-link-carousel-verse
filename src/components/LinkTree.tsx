@@ -58,21 +58,21 @@ const socialMediaLinks = [
 const portfolioLinks = [
   {
     id: '1',
-    title: 'Projeto de Design',
-    url: 'https://seusite.com/projeto1',
-    imageUrl: 'https://placehold.co/600x400/9b87f5/FFFFFF/png?text=Design+Projeto',
-    description: 'UI/UX para app de fitness'
+    title: 'Delta Run Muscle',
+    url: 'https://deltarunmuscle.netlify.app/',
+    imageUrl: 'https://placehold.co/600x400/9b87f5/FFFFFF/png?text=Delta+Run+Muscle',
+    description: 'Projeto de Briefing Para Delta Fitness'
   },
   {
     id: '2',
-    title: 'Website Corporativo',
-    url: 'https://seusite.com/projeto2',
-    imageUrl: 'https://placehold.co/600x400/7E69AB/FFFFFF/png?text=Website',
-    description: 'Redesign de site corporativo'
+    title: 'AriWhats',
+    url: 'https://whatsgeneratorlink.netlify.app/',
+    imageUrl: 'https://placehold.co/600x400/7E69AB/FFFFFF/png?text=Gerador+Link+WhasApp',
+    description: 'Gerador de Links WhatsApp Personalizado'
   },
   {
     id: '3',
-    title: 'Branding',
+    title: 'Branding (em breve)',
     url: 'https://seusite.com/projeto3',
     imageUrl: 'https://placehold.co/600x400/6E59A5/FFFFFF/png?text=Branding',
     description: 'Identidade visual para startup'
