@@ -13,7 +13,7 @@ const socialMediaLinks = [
   },
   {
     id: '2',
-    title: 'LinkedIn',
+    title: 'LinkedIn (em breve)',
     url: 'https://linkedin.com/in/seuusuario',
     imageUrl: 'https://placehold.co/600x400/0A66C2/FFFFFF/png?text=LinkedIn',
     description: 'Meu perfil profissional'
@@ -34,14 +34,14 @@ const socialMediaLinks = [
   },
   {
     id: '5',
-    title: 'Facebook',
+    title: 'Facebook (em breve)',
     url: 'https://facebook.com/seuusuario',
     imageUrl: 'https://placehold.co/600x400/1877F2/FFFFFF/png?text=Facebook',
     description: 'Minha página no Facebook'
   },
   {
     id: '6',
-    title: 'Threads',
+    title: 'Threads (em breve)',
     url: 'https://www.threads.net/@arinelson.me',
     imageUrl: 'https://placehold.co/600x400/black/FFFFFF/png?text=Threads',
     description: 'Siga-me no Threads'
